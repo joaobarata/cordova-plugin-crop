@@ -44,8 +44,8 @@
     cropController.delegate = self;
     cropController.image = image;
     
-    CGFloat width = self.targetWidth > -1 ? (CGFloat)self.targetWidth : image.size.width;
-    CGFloat height = self.targetHeight > -1 ? (CGFloat)self.targetHeight : image.size.height;
+    CGFloat width = (NSInteger)self.targetWidth > (NSInteger)-1 ? (CGFloat)self.targetWidth : image.size.width;
+    CGFloat height = (NSInteger)self.targetHeight > (NSInteger)-1 ? (CGFloat)self.targetHeight : image.size.height;
     CGFloat croperWidth;
     CGFloat croperHeight;
 
@@ -58,7 +58,11 @@
          if(self.widthRatio > self.heightRatio) {
              croperWidth = width;
              croperHeight = width * self.heightRatio / self.widthRatio;
-         } else {
+         } else if (self.widthRatio == self.heightRatio) {
+             croperWidth = MIN(width, height);
+             croperWidth = MIN(width, height);
+         }
+         else {
              croperWidth = height * self.widthRatio / self.heightRatio;
              croperHeight = height;
          }
