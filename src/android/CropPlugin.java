@@ -51,7 +51,7 @@ public class CropPlugin extends CordovaPlugin {
                   crop.asSquare();
               }
           } else {
-              crop.asSquare();
+              croper.asSquare();
           }
 
           if(widthRatio > 0 && heightRatio > 0){
