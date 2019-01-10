@@ -47,6 +47,11 @@ public class CropPlugin extends CordovaPlugin {
 
           if(targetHeight > 0 && targetWidth > 0) {
               croper.withMaxSize(targetWidth, targetHeight);
+              if(targetWidth == targetHeight) {
+                  crop.asSquare();
+              }
+          } else {
+              crop.asSquare();
           }
 
           if(widthRatio > 0 && heightRatio > 0){
